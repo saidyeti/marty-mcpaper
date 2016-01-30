@@ -40,16 +40,16 @@ module.exports = function (Q) {
           p.vy = 0;
         }
 
-        if (p.landed > 0 && (Q.inputs['up'] || Q.inputs['action']) && !p.jumping) {
+        if (p.landed > 0 && Q.inputs['jump'] && !p.jumping) {
           p.vy = p.jumpSpeed;
           p.landed = -dt;
           p.jumping = true;
-        } else if (Q.inputs['up'] || Q.inputs['action']) {
+        } else if (Q.inputs['jump']) {
           this.entity.trigger('jump', this.entity);
           p.jumping = true;
         }
 
-        if (p.jumping && !(Q.inputs['up'] || Q.inputs['action'])) {
+        if (p.jumping && !Q.inputs['jump']) {
           p.jumping = false;
           this.entity.trigger('jumped', this.entity);
           if (p.vy < p.jumpSpeed / 3) {

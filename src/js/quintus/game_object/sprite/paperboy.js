@@ -9,6 +9,12 @@ module.exports = function (Q) {
       });
 
       this.add('2d, animation, jumpControls');
+
+      Q.input.on('jump', this, 'jump');
+    },
+
+    jump: function () {
+      console.log('paperboy jump!');
     },
 
     step: function (dt) {
