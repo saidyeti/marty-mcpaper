@@ -53,16 +53,24 @@
   /* scenes */
   require('./quintus/scene/route')(Q);
 
+
   Q.load(['mario.gif'], function() {
 
     // Q.compileSheets('sprites.png', 'sprites.json');
  //--------------------------------------ALI STARTS MESSING ------------------
 
     Q.stageScene('route');
+    Q.stageScene('hud', 1, {
+     label: 'Label for testing'
+    });
 
     //beginning score
+
     Q.state.set({ score: 50, lives: 3 });
     Q.state.get('score');
+
+
+
 //------------------------------------------ALI STOPS MESSING---------------
   }, {
     progressCallback: function(loaded, total) {

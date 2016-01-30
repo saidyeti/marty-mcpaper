@@ -3,10 +3,10 @@ module.exports = function (Q) {
   Q.UI.Text.extend('Score', {
 
     init: function (p) {
-      this._super({
+      this._super(p, {
         label: 'score: 0',
-        x: 0,
-        y: 0
+      //  x: 5,
+      //  y: 1
       });
       Q.state.on('change.score', this, 'score');
     },
