@@ -27,15 +27,6 @@
     upsampleHeight: 320
   });
 
-  /* custom components */
-  require('./quintus/component/jumpcontrols')(Q);
-
-  /* sprites */
-  require('./quintus/game_object/sprite/paperboy')(Q);
-
-  /* scenes */
-  require('./quintus/scene/route')(Q);
-
   Q.input.keyboardControls({
     Z: 'jump',
     X: 'fire'
@@ -50,6 +41,15 @@
       ['jump', 'a']
     ]
   });
+
+  /* custom components */
+  require('./quintus/component/jumpcontrols')(Q);
+
+  /* sprites */
+  require('./quintus/game_object/sprite/paperboy')(Q);
+
+  /* scenes */
+  require('./quintus/scene/route')(Q);
 
   Q.load([/*'sprites.png', 'sprites.json'*/], function() {
 
