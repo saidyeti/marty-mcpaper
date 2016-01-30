@@ -4,9 +4,12 @@
   var Quintus = require('Quintus/lib/quintus');
 
   /* official Quintus modules */ 
-  require('Quintus/lib/quintus_sprites')(Quintus);
-  require('Quintus/lib/quintus_scenes')(Quintus);
+  require('Quintus/lib/quintus_2d')(Quintus);
+  require('Quintus/lib/quintus_anim')(Quintus);
+  require('Quintus/lib/quintus_audio')(Quintus);
   require('Quintus/lib/quintus_input')(Quintus);
+  require('Quintus/lib/quintus_scenes')(Quintus);
+  require('Quintus/lib/quintus_sprites')(Quintus);
   require('Quintus/lib/quintus_touch')(Quintus);
   require('Quintus/lib/quintus_ui')(Quintus);
 
@@ -15,24 +18,38 @@
 
   /* Quintus instance and environment preparation */
   var Q = Quintus({ development: true })
-            .include('Sprites, Scenes, Input, Touch, UI');
+            .include('2D, Anim, Audio, Input, Scenes, Sprites, Touch, UI');
   Q.setup({
     width: 800,
     height: 600,
     maximize: 'touch',
     upsampleWidth: 420,
     upsampleHeight: 320
-  })
-  .controls();
+  });
 
   /* custom components */
-  // nothing yet
+  require('./quintus/component/jumpcontrols')(Q);
 
   /* sprites */
-  // nothing yet
+  require('./quintus/game_object/sprite/paperboy')(Q);
 
   /* scenes */
-  // nothing yet
+  require('./quintus/scene/route')(Q);
+
+  Q.input.keyboardControls({
+    Z: 'jump',
+    X: 'fire'
+  });
+
+  Q.input.touchControls({
+    controls: [
+      [],
+      [],
+      [],
+      ['fire', 'b'],
+      ['jump', 'a']
+    ]
+  });
 
   Q.load([/*'sprites.png', 'sprites.json'*/], function() {
 
