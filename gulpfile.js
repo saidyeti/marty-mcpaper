@@ -66,4 +66,4 @@ gulp.task('watch', function () {
   gulp.watch(['src/js/**/*.js'], ['browserify', 'lint']);
 });
 
-gulp.task('default', ['copy', 'browserify', 'spritesheet', 'watch']);
+gulp.task('default', ['copy', 'browserify', 'spritesheet', 'lint', 'watch']);
