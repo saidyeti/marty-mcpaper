@@ -73,7 +73,7 @@
 
 //------------------------------------------ALI STOPS MESSING---------------
   }, {
-    progressCallback: function(loaded, total) {
+    progressCallback: function (loaded, total) {
       var loadingBar = document.getElementById('loading_progress');
       loadingBar.style.width = Math.floor(loaded / total * 100) + '%';
     }

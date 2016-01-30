@@ -4,38 +4,19 @@
 module.exports = function (Q) {
 
   Q.component('jumpControls', {
-    defaults: {
-      jumpSpeed: -300,
-      collisions: []
-    },
 
-    added: function () {
-      var p = this.entity.p;
-
-      Q._defaults(p, this.defaults);
-
-      this.entity.on('step', this, 'step');
-      this.entity.on('bump.bottom', this, 'landed');
-
-      p.landed = 0;
-      p.direction ='right';
-    },
-
-    landed: function (col) {
-      var p = this.entity.p;
-      p.landed = 1/5;
-    },
-
-    // TODO: Implement compontent extension? Also, remove
-    // functionality below irrelevant to jumping.
     step: function (dt) {
+      /* Modification of step method from Input module's platformerControls,
+       * ignoring all left/right input.
+       */
+
       var p = this.entity.p;
 
-      if (p.ignoreControls === undefined || !p.ignoreControls) {
+      if (!p.ignoreControls) {
         var collision = null;
 
         // Follow along the current slope, if possible.
-        if (p.collisions !== undefined && p.collisions.length > 0 && (Q.inputs['left'] || Q.inputs['right'] || p.landed > 0)) {
+        if (p.collisions !== undefined && p.collisions.length > 0 && p.landed > 0) {
           if (p.collisions.length === 1) {
             collision = p.collisions[0];
           } else {
@@ -55,27 +36,8 @@ module.exports = function (Q) {
           }
         }
 
-        if (Q.inputs['left']) {
-          p.direction = 'left';
-          if (collision && p.landed > 0) {
-            p.vx = p.speed * collision.normalY;
-            p.vy = -p.speed * collision.normalX;
-          } else {
-            p.vx = -p.speed;
-          }
-        } else if (Q.inputs['right']) {
-          p.direction = 'right';
-          if (collision && p.landed > 0) {
-            p.vx = -p.speed * collision.normalY;
-            p.vy = p.speed * collision.normalX;
-          } else {
-            p.vx = p.speed;
-          }
-        } else {
-          p.vx = 0;
-          if (collision && p.landed > 0) {
-            p.vy = 0;
-          }
+        if (collision && p.landed > 0) {
+          p.vy = 0;
         }
 
         if (p.landed > 0 && (Q.inputs['up'] || Q.inputs['action']) && !p.jumping) {
@@ -97,6 +59,7 @@ module.exports = function (Q) {
       }
       p.landed -= dt;
     }
-  });
+
+  }, 'platformerControls');
 
 };
