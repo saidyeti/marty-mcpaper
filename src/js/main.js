@@ -51,7 +51,11 @@
   /* scenes */
   require('./quintus/scene/route')(Q);
 
-  Q.load([/*'sprites.png', 'sprites.json'*/], function() {
+  Q.load([
+    /* 'sprites.png',
+     * 'sprites.json'
+     */
+  ], function() {
 
     // Q.compileSheets('sprites.png', 'sprites.json');
     
@@ -60,10 +64,9 @@
       label: 'LEVEL 1'
     });
     */
-    console.log('hey');
 
   }, {
-    progressCallback: function(loaded, total) {
+    progressCallback: function (loaded, total) {
       var loadingBar = document.getElementById('loading_progress');
       loadingBar.style.width = Math.floor(loaded / total * 100) + '%';
     }
