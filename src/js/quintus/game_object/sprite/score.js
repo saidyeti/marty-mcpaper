@@ -5,10 +5,12 @@ module.exports = function (Q) {
     init: function (p) {
       this._super(p, {
         label: 'Score: 0',
+        
       //  x: 5,
       //  y: 1
       });
       Q.state.on('change.score', this, 'score');
+      this.fontString = 'normal 20pt Bangers';
     },
 
     score: function (score) {

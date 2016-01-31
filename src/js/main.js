@@ -27,6 +27,7 @@
     upsampleHeight: 320
   });
 
+   
 
   Q.input.keyboardControls({
     Z: 'jump',
@@ -59,6 +60,7 @@
   /* scenes */
   require('./quintus/scene/background')(Q);
   require('./quintus/scene/route')(Q);
+  require('./quintus/scene/hud')(Q);
   require('./quintus/scene/endGame')(Q);
 
   Q.load(['sprites.png', 'sprites.json', 'background.svg'], function() {
@@ -71,12 +73,14 @@
       sort: true
     });
     Q.stageScene('hud', 2, {
-      label: 'Paperboy'
+      label: ''
     });
 
     //beginning score
     Q.state.set({ score: 50, lives: 3 });
     Q.state.get('score');
+
+    
 
   }, {
     progressCallback: function (loaded, total) {
