@@ -1,16 +1,24 @@
 module.exports = function (Q) {
 
-  Q.Sprite.extend('PaperBoy', {
+  var homeTypes = ['barbie', 'basic', 'phil', 'rocko', 'snow'];
+  var frameTotal = 3;
+
+  Q.Sprite.extend('House', {
 
     init: function (p) {
-      this._super(p);
+      var typeChoice = homeTypes[Math.floor(Math.random() * 5)];
+      this._super(p, {
+        sprite: typeChoice,
+        sheet: typeChoice,
+        frame: Math.floor(Math.random() * frameTotal),
+        z: -1
+      });
 
-      this.add('2d, jumpControls');
-
-      Q.input.on('jump', this, 'jump');
+      this.add('2d');
     },
 
     setupChildren: function () {
+      /*
       var stage = this.stage;
       stage.insert(new Q.Leg({
         scale: 0.82,
@@ -58,20 +66,7 @@ module.exports = function (Q) {
       }), this);
 
       torso.on('paperthrown', this, 'sendPaperFlying');
-    },
-
-    jump: function () {
-      console.log('paperboy jump!');
-    },
-
-    move: function () {
-      this.children.forEach(function (child) {
-        child.trigger('move');
-      });
-    },
-
-    sendPaperFlying: function () {
-      console.log('send paper flying!');
+      */
     }
 
   });

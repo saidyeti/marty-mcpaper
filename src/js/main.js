@@ -35,11 +35,11 @@
 
   Q.input.touchControls({
     controls: [
+      ['fire', 'T'],
       [],
       [],
       [],
-      ['fire', 'b'],
-      ['jump', 'a']
+      ['jump', 'J']
     ]
   });
 
@@ -54,6 +54,7 @@
   require('./quintus/game_object/sprite/leg')(Q);
   require('./quintus/game_object/sprite/bicycle')(Q);
   require('./quintus/game_object/sprite/wheel')(Q);
+  require('./quintus/game_object/sprite/house')(Q);
 
   /* scenes */
   require('./quintus/scene/background')(Q);
@@ -66,7 +67,9 @@
 
     /* staging */
     Q.stageScene('background');
-    Q.stageScene('route', 1);
+    Q.stageScene('route', 1, {
+      sort: true
+    });
     Q.stageScene('hud', 2, {
       label: 'Paperboy'
     });
