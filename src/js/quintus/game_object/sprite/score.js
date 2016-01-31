@@ -10,6 +10,7 @@ module.exports = function (Q) {
       //  y: 1
       });
       Q.state.on('change.score', this, 'score');
+      this.fontString = 'normal 20pt Bangers';
     },
 
     score: function (score) {

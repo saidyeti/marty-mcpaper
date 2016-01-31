@@ -4,10 +4,10 @@ module.exports = function (Q) {
 
     init: function (p) {
       this._super(p, {
-        label: 'Lives: 0 ',
-        
+        label: 'Lives: 0'
       });
       Q.state.on('change.lives', this, 'lives');
+      this.fontString = 'normal 20pt Bangers';
      
     },
 

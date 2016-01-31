@@ -13,12 +13,12 @@ module.exports = function (Q) {
     var label = stage.insert(new Q.UI.Text({
       x: 400,
       y: 10,
-      label: stage.options.label
-
-
+      label: stage.options.label,
     
     }));
+
 
   });
 
 };
+
