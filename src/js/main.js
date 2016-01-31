@@ -60,7 +60,7 @@
   require('./quintus/scene/route')(Q);
   require('./quintus/scene/endGame')(Q);
 
-  Q.load(['sprites.png', 'sprites.json'], function() {
+  Q.load(['sprites.png', 'sprites.json', 'background.svg'], function() {
 
     Q.compileSheets('sprites.png', 'sprites.json');
 
