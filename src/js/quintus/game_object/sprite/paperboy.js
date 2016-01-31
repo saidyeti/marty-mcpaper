@@ -10,7 +10,8 @@ module.exports = function (Q) {
       Q.input.on('jump', this, 'jump');
     },
 
-    setupChildren: function (stage) {
+    setupChildren: function () {
+      var stage = this.stage;
       stage.insert(new Q.Leg({
         scale: 0.82,
         x: -30,
