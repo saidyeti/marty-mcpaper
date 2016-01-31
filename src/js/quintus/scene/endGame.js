@@ -7,22 +7,26 @@ module.exports = function (Q) {
 
       var button = container.insert(new Q.UI.Button({
         x: 0, 
-        y: -10, 
+        y: 0, 
         fill: 'rgba(204,204,204,0.5)', 
         label: 'Try Again?'
       }));
 
-      var label = container.insert(new Q.UI.Text({
+    /* var label = container.insert(new Q.UI.Text({
         x: 0,
         y: -10,
-        label: stage.options.label }));
+        label: stage.options.label })); */
 
-      button.on('click', function() {
+      // When button is clicked, clear all stages
+      // and restart game
+
+      button.on('fire', function() {
+        console.log('is my end game button working?');
         Q.clearStages();
         Q.stageScene('route');
       });
 
-        container.fit(20);
+      container.fit(20);
     }); /* end scene */
 
 

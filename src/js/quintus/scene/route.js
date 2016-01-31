@@ -3,6 +3,7 @@ module.exports = function (Q) {
   Q.scene('route', function (stage) {
 
     var paperboy = stage.insert(new Q.PaperBoy({
+      //scale: 0.5,
       x: 400,
       y: 200,
       gravity: 0,
@@ -25,7 +26,6 @@ module.exports = function (Q) {
     }), paperboy);
   
     var bicycle = stage.insert(new Q.Bicycle({
-      //scale: 0.5,
       gravity: 0,
       collisionMask: null
     }), paperboy);
