@@ -49,12 +49,14 @@
   require('./quintus/game_object/sprite/score')(Q);
   require('./quintus/game_object/sprite/lives')(Q);
   require('./quintus/game_object/sprite/paperboy')(Q);
+  require('./quintus/game_object/sprite/bicycle')(Q);
+  require('./quintus/game_object/sprite/wheel')(Q);
 
   /* scenes */
   require('./quintus/scene/route')(Q);
 
 
-  Q.load(['mario.gif'], function() {
+  Q.load(['sprites.png', 'sprites.json'], function() {
 
     // Q.compileSheets('sprites.png', 'sprites.json');
  //--------------------------------------ALI STARTS MESSING ------------------
