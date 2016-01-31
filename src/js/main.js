@@ -52,23 +52,23 @@
 
   /* scenes */
   require('./quintus/scene/route')(Q);
+  require('./quintus/scene/endGame')(Q);
 
 
   Q.load(['mario.gif'], function() {
 
     // Q.compileSheets('sprites.png', 'sprites.json');
- //--------------------------------------ALI STARTS MESSING ------------------
-
-    Q.stageScene('route');
-    Q.stageScene('hud', 1, {
-     label: 'Label for testing'
+  /* staging */
+    Q.stageScene('endGame');
+  /*  Q.stageScene('hud', 1, {
+     label: 'Paperboy'
     });
 
     //beginning score
 
     Q.state.set({ score: 50, lives: 3 });
     Q.state.get('score');
-
+   */
 
 
 //------------------------------------------ALI STOPS MESSING---------------
