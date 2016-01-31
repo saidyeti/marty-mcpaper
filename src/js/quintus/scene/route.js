@@ -12,8 +12,34 @@ module.exports = function (Q) {
     }));
     paperboy.setupChildren();
     stage.add('viewport').follow(paperboy, { x: true, y: false });
+    stage.viewport.offset(-200, 0);
 
     paperboy.move();
+
+    var houseQueue = [];
+
+    stage.on('prestep', stage, function (dt) {
+      var houses = Q('House');
+      houseQueue.forEach(function (house, index) {
+        if (house.p.x < paperboy.p.x - Q.width) {
+          stage.remove(house);
+          houseQueue.splice(index, 1);
+        }
+      });
+      var entryPoint = paperboy.p.x + 1300;
+      var lastHouse = houseQueue[houseQueue.length - 1];
+      while (!lastHouse || lastHouse.p.x + lastHouse.p.w < entryPoint) {
+        var house = stage.insert(new Q.House({
+          scale: 0.5,
+          gravity: 0,
+          collisionMask: null,
+          x: lastHouse ? lastHouse.p.x + 600 : entryPoint,
+          y: 225
+        }));
+        houseQueue.push(house);
+        lastHouse = house;
+      }
+    });
 
   });
 
