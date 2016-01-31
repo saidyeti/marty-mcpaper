@@ -54,23 +54,27 @@
 
   /* scenes */
   require('./quintus/scene/route')(Q);
+  require('./quintus/scene/endGame')(Q);
 
 
   Q.load(['sprites.png', 'sprites.json'], function() {
 
-    // Q.compileSheets('sprites.png', 'sprites.json');
- //--------------------------------------ALI STARTS MESSING ------------------
-
-    Q.stageScene('route');
-    Q.stageScene('hud', 1, {
-     label: 'Label for testing'
+    Q.compileSheets('sprites.png', 'sprites.json');
+  /* staging */
+    //Q.stageScene('endGame');
+  /*  Q.stageScene('hud', 1, {
+     label: 'Paperboy'
     });
 
     //beginning score
 
     Q.state.set({ score: 50, lives: 3 });
     Q.state.get('score');
-
+   */
+   Q.stageScene('route');
+   Q.stageScene('hud', 1, {
+    label: 'Paperboy'
+   });
 
 
 //------------------------------------------ALI STOPS MESSING---------------

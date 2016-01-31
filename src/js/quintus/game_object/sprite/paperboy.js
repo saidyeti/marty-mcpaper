@@ -3,12 +3,9 @@ module.exports = function (Q) {
   Q.Sprite.extend('PaperBoy', {
 
     init: function (p) {
-      this._super(p, {
-        sprite: 'paperboy',
-        sheet: 'paperboy'
-      });
+      this._super(p);
 
-      this.add('2d, animation, jumpControls');
+      this.add('2d, jumpControls');
 
       Q.input.on('jump', this, 'jump');
     },

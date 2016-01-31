@@ -4,6 +4,8 @@ var source = require('vinyl-source-stream');
 var shell = require('gulp-shell');
 var plumber = require('gulp-plumber');
 var jshint = require('gulp-jshint');
+var responsive = require('gulp-responsive-images');
+var runSequence = require('run-sequence');
 
 gulp.task('copy', [
   'copy:html',
@@ -17,8 +19,7 @@ gulp.task('copy:html', function () {
 
 gulp.task('copy:assets', [
   'copy:audio',
-  'copy:data',
-  'copy:images'
+  'copy:data'
 ]);
 
 gulp.task('copy:audio', function () {
@@ -31,10 +32,55 @@ gulp.task('copy:data', function () {
     .pipe(gulp.dest('./dist/data/'));
 });
 
-gulp.task('copy:images', function () {
+gulp.task('compileSprites', function(cb) {
+  runSequence('resizeImages', 'spritesheet', cb);
+});
+
+gulp.task('resizeImages', function () {
   return gulp.src('./src/images/*')
+    .pipe(plumber())
+    .pipe(responsive({
+      'bikeframe1.png': [{
+        width: 360
+      }],
+      'tree1.png': [{
+        width: 68
+      }],
+      'wheel*.png': [{
+        width: 243
+      }],
+      'basic*.png': [{
+        width: 920
+      }],
+      'rocko*.png': [{
+        width: 742
+      }],
+      'barbie*.png': [{
+        width: 477
+      }],
+      'phil*.png': [{
+        width: 671
+      }],
+      'snow*.png': [{
+        width: 834
+      }],
+      'window*.png': [{
+        width: 132
+      }],
+      'man*.png': [{
+        width: 354
+      }],
+      'leg*.png': [{
+        width: 309
+      }],
+      'puff*.png': [{}]
+    }))
     .pipe(gulp.dest('./dist/images/'));
 });
+
+gulp.task('spritesheet', shell.task([
+  'node_modules/.bin/spriter dist/images/ -i dist/images -d dist/data'
+], { ignoreErrors: true }));
  
 gulp.task('browserify', function() {
   return browserify('./src/js/main.js')
@@ -47,10 +93,6 @@ gulp.task('browserify', function() {
     .pipe(gulp.dest('./dist/js/'));
 });
 
-gulp.task('spritesheet', shell.task([
-  'node_modules/.bin/spriter src/images/ -i dist/images -d dist/data'
-], { ignoreErrors: true }));
-
 gulp.task('lint', function () {
   return gulp.src('src/js/**/*.js')
     .pipe(plumber())
@@ -62,8 +104,8 @@ gulp.task('watch', function () {
   gulp.watch(['src/index.html'], ['copy:html']);
   gulp.watch(['src/audio/*'], ['copy:audio']);
   gulp.watch(['src/data/*'], ['copy:data']);
-  gulp.watch(['src/images/*'], ['copy:images', 'spritesheet']);
+  gulp.watch(['src/images/*'], ['compileSprites']);
   gulp.watch(['src/js/**/*.js'], ['browserify', 'lint']);
 });
 
-gulp.task('default', ['copy', 'browserify', 'spritesheet', 'lint', 'watch']);
+gulp.task('default', ['copy', 'browserify', 'compileSprites', 'lint', 'watch']);

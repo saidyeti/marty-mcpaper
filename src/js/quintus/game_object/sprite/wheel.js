@@ -5,20 +5,20 @@ module.exports = function (Q) {
     init: function (p) {
       this._super(p, {
         sprite: 'wheel',
-        sheet: 'wheel'
+        sheet: 'wheel',
+        frame: 0
       });
 
-      this.add('2d, tween');
-    },
-
-    rotate: function () {
-      this.animate({ angle: 360 }, 1.25, {
-        callback: function (wheel) {
-          wheel.rotate();
-        }
-      });
+      this.add('2d, animation');
     }
 
+  });
+
+  Q.animations('wheel', {
+    rotate: {
+      frames: [0, 1, 2],
+      rate: 1/24
+    }
   });
 
 };
