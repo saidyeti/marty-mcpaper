@@ -12,13 +12,14 @@
   require('Quintus/lib/quintus_audio')(Quintus);
   require('Quintus/lib/quintus_input')(Quintus);
   require('Quintus/lib/quintus_2d')(Quintus);
+  require('Quintus/extra/quintus_svg')(Quintus);
 
   /* custom Quintus modules */
-  // nothing yet
+  require('./quintus/module/svg_asset')(Quintus);
 
   /* Quintus instance and environment preparation */
   var Q = Quintus({ development: true })
-            .include('Sprites, Scenes, Touch, UI, Anim, Audio, Input, 2D');
+            .include('Sprites, Scenes, Touch, UI, Anim, Audio, Input, 2D, SVGAsset');
   Q.setup({
     width: 800,
     height: 600,
@@ -52,27 +53,28 @@
   require('./quintus/game_object/sprite/paperboy')(Q);
 
   /* scenes */
+  require('./quintus/scene/background')(Q);
   require('./quintus/scene/route')(Q);
   require('./quintus/scene/endGame')(Q);
 
 
-  Q.load(['mario.gif'], function() {
+
+  Q.load(['mario.gif', 'background.svg'], function() {
 
     // Q.compileSheets('sprites.png', 'sprites.json');
-  /* staging */
-    Q.stageScene('ground');
-  /*  Q.stageScene('hud', 1, {
-     label: 'Paperboy'
-    });
+
+    /* staging */
+        Q.stageScene('background');
+        Q.stageScene('route', 1);
+        Q.stageScene('hud', 2, {
+           label: 'Paperboy'
+  });
 
     //beginning score
 
     Q.state.set({ score: 50, lives: 3 });
     Q.state.get('score');
-   */
-
-
-//------------------------------------------ALI STOPS MESSING---------------
+   
   }, {
     progressCallback: function (loaded, total) {
       var loadingBar = document.getElementById('loading_progress');
