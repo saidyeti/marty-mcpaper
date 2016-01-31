@@ -12,9 +12,9 @@ module.exports = function (Q) {
 
     setupChildren: function (stage) {
       stage.insert(new Q.Leg({
-        scale: 0.85,
-        x: -10,
-        y: -5,
+        scale: 0.82,
+        x: -30,
+        y: 5,
         gravity: 0,
         collisionMask: null,
         startAtTop: true
@@ -40,8 +40,9 @@ module.exports = function (Q) {
       }), this);
 
       stage.insert(new Q.Leg({
-        scale: 0.85,
+        scale: 0.82,
         x: -30,
+        y: 5,
         gravity: 0,
         collisionMask: null,
         startAtTop: false

@@ -3,9 +3,10 @@ module.exports = function (Q) {
   Q.scene('route', function (stage) {
 
     var paperboy = stage.insert(new Q.PaperBoy({
-      scale: 0.5,
-      x: 400,
-      y: 300,
+      scale: 0.4,
+      x: 50,
+      y: 330,
+      vx: 500,
       gravity: 0,
       collisionMask: null
     }));

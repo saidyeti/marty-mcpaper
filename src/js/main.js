@@ -68,7 +68,7 @@
     Q.stageScene('background');
     Q.stageScene('route', 1);
     Q.stageScene('hud', 2, {
-       label: 'Paperboy'
+      label: 'Paperboy'
     });
 
     //beginning score
