@@ -10,8 +10,7 @@ module.exports = function (Q) {
       this._super(p, {
         sprite: typeChoice,
         sheet: typeChoice,
-        frame: Math.floor(Math.random() * frameTotal),
-        z: -1
+        frame: Math.floor(Math.random() * frameTotal)
       });
 
       this.add('2d');

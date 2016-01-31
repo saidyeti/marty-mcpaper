@@ -8,7 +8,8 @@ module.exports = function (Q) {
       y: 440,
       vx: 500,
       gravity: 0,
-      collisionMask: null
+      collisionMask: null,
+      z: 1
     }));
     paperboy.setupChildren();
     stage.add('viewport').follow(paperboy, { x: true, y: false });
@@ -34,7 +35,8 @@ module.exports = function (Q) {
           gravity: 0,
           collisionMask: null,
           x: lastHouse ? lastHouse.p.x + 600 : entryPoint,
-          y: 225
+          y: 225,
+          z: -1
         }));
         houseQueue.push(house);
         lastHouse = house;
