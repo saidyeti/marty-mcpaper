@@ -58,7 +58,10 @@
   /* scenes */
   require('./quintus/scene/background')(Q);
   require('./quintus/scene/route')(Q);
+  require('./quintus/scene/hud')(Q);
   require('./quintus/scene/endGame')(Q);
+
+
 
   Q.load(['sprites.png', 'sprites.json', 'background.svg'], function() {
 
@@ -74,6 +77,8 @@
     //beginning score
     Q.state.set({ score: 50, lives: 3 });
     Q.state.get('score');
+
+    
 
   }, {
     progressCallback: function (loaded, total) {

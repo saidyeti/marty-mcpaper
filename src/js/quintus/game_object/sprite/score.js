@@ -5,6 +5,7 @@ module.exports = function (Q) {
     init: function (p) {
       this._super(p, {
         label: 'Score: 0',
+        
       //  x: 5,
       //  y: 1
       });

@@ -7,6 +7,8 @@ module.exports = function (Q) {
       speedY: 0.5,
      // type: 0 
       scale: 0.5
+
+    
     }));
     
 

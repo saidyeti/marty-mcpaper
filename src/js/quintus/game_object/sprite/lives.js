@@ -4,11 +4,11 @@ module.exports = function (Q) {
 
     init: function (p) {
       this._super(p, {
-        label: 'Lives: 0',
-      //  x: 10,
-      //  y: 40
+        label: 'Lives: 0 ',
+        
       });
       Q.state.on('change.lives', this, 'lives');
+     
     },
 
     lives: function (lives) {
