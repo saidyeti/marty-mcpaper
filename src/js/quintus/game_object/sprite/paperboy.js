@@ -10,8 +10,66 @@ module.exports = function (Q) {
       Q.input.on('jump', this, 'jump');
     },
 
+    setupChildren: function (stage) {
+      stage.insert(new Q.Leg({
+        scale: 0.85,
+        x: -10,
+        y: -5,
+        gravity: 0,
+        collisionMask: null,
+        startAtTop: true
+      }), this);
+
+      stage.insert(new Q.Wheel({
+        x: -165,
+        y: 95,
+        gravity: 0,
+        collisionMask: null
+      }), this);
+
+      stage.insert(new Q.Wheel({
+        x: 172,
+        y: 95,
+        gravity: 0,
+        collisionMask: null
+      }), this);
+    
+      stage.insert(new Q.Bicycle({
+        gravity: 0,
+        collisionMask: null
+      }), this);
+
+      stage.insert(new Q.Leg({
+        scale: 0.85,
+        x: -30,
+        gravity: 0,
+        collisionMask: null,
+        startAtTop: false
+      }), this);
+
+      var torso = stage.insert(new Q.Torso({
+        scale: 0.9,
+        y: -230,
+        x: -30,
+        gravity: 0,
+        collisionMask: null
+      }), this);
+
+      torso.on('paperthrown', this, 'sendPaperFlying');
+    },
+
     jump: function () {
       console.log('paperboy jump!');
+    },
+
+    move: function () {
+      this.children.forEach(function (child) {
+        child.trigger('move');
+      });
+    },
+
+    sendPaperFlying: function () {
+      console.log('send paper flying!');
     },
 
     step: function (dt) {

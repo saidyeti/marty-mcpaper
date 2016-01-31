@@ -10,6 +10,12 @@ module.exports = function (Q) {
       });
 
       this.add('2d, animation');
+
+      this.on('move');
+    },
+
+    move: function () {
+      this.play('rotate');
     }
 
   });

@@ -50,6 +50,8 @@
   require('./quintus/game_object/sprite/score')(Q);
   require('./quintus/game_object/sprite/lives')(Q);
   require('./quintus/game_object/sprite/paperboy')(Q);
+  require('./quintus/game_object/sprite/torso')(Q);
+  require('./quintus/game_object/sprite/leg')(Q);
   require('./quintus/game_object/sprite/bicycle')(Q);
   require('./quintus/game_object/sprite/wheel')(Q);
 

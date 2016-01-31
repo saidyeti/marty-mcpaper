@@ -3,35 +3,16 @@ module.exports = function (Q) {
   Q.scene('route', function (stage) {
 
     var paperboy = stage.insert(new Q.PaperBoy({
-      //scale: 0.5,
+      scale: 0.5,
       x: 400,
-      y: 200,
+      y: 300,
       gravity: 0,
       collisionMask: null
     }));
-    stage.add('viewport');//.follow(paperboy, { x: true, y: false });
+    paperboy.setupChildren(stage);
+    stage.add('viewport').follow(paperboy, { x: true, y: false });
 
-    var wheel1 = stage.insert(new Q.Wheel({
-      x: -165,
-      y: 95,
-      gravity: 0,
-      collisionMask: null
-    }), paperboy);
-
-    var wheel2 = stage.insert(new Q.Wheel({
-      x: 172,
-      y: 95,
-      gravity: 0,
-      collisionMask: null
-    }), paperboy);
-  
-    var bicycle = stage.insert(new Q.Bicycle({
-      gravity: 0,
-      collisionMask: null
-    }), paperboy);
-
-    wheel1.play('rotate');
-    wheel2.play('rotate');
+    paperboy.move();
 
   });
 
