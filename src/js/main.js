@@ -27,6 +27,7 @@
     upsampleHeight: 320
   });
 
+
   Q.input.keyboardControls({
     Z: 'jump',
     X: 'fire'
@@ -59,7 +60,7 @@
 
     // Q.compileSheets('sprites.png', 'sprites.json');
   /* staging */
-    Q.stageScene('endGame');
+    Q.stageScene('ground');
   /*  Q.stageScene('hud', 1, {
      label: 'Paperboy'
     });
