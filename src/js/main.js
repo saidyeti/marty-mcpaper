@@ -62,30 +62,37 @@
   require('./quintus/scene/hud')(Q);
   require('./quintus/scene/endGame')(Q);
 
-  Q.load(['sprites.png', 'sprites.json', 'background.svg'], function() {
+  setTimeout(function() {
 
-    Q.compileSheets('sprites.png', 'sprites.json');
+    Q.load(['sprites.png', 'sprites.json', 'background.svg'], function() {
 
-    /* staging */
-    Q.stageScene('background');
-    Q.stageScene('route', 1, {
-      sort: true
+      document.getElementById('intro_image').style.display = 'none';
+
+      Q.compileSheets('sprites.png', 'sprites.json');
+
+      /* staging */
+      Q.stageScene('background');
+      Q.stageScene('route', 1, {
+        sort: true
+      });
+      Q.stageScene('hud', 2, {
+        label: ''
+      });
+
+      //beginning score
+      Q.state.set({ score: 0, lives: 3 });
+      Q.state.get('score');
+
+      
+
+    }, {
+      progressCallback: function (loaded, total) {
+        var loadingBar = document.getElementById('loading_progress');
+        loadingBar.style.width = Math.floor(loaded / total * 100) + '%';
+      }
     });
-    Q.stageScene('hud', 2, {
-      label: ''
-    });
 
-    //beginning score
-    Q.state.set({ score: 50, lives: 3 });
-    Q.state.get('score');
 
-    
-
-  }, {
-    progressCallback: function (loaded, total) {
-      var loadingBar = document.getElementById('loading_progress');
-      loadingBar.style.width = Math.floor(loaded / total * 100) + '%';
-    }
-  });
+  }, 3500);
 
 })();

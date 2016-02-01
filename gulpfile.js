@@ -46,6 +46,7 @@ gulp.task('resizeImages', function () {
   return gulp.src('./src/images/*')
     .pipe(plumber())
     .pipe(responsive({
+      'intro_gif.gif': [{}],
       'bikeframe1.png': [{
         width: 360
       }],
