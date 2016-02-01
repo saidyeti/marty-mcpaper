@@ -11,6 +11,11 @@ module.exports = function (Q) {
       });
 
       this.add('2d, tween');
+    },
+
+    stopMoving: function () {
+      this.p.vx = 0;
+      this.p.vy = 0;
     }
 
   });

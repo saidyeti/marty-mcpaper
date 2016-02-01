@@ -13,7 +13,7 @@ module.exports = function (Q) {
     }));
     paperboy.setupChildren();
     stage.add('viewport').follow(paperboy, { x: true, y: false });
-    stage.viewport.offset(-200, 0);
+    stage.viewport.offset(-170, 0);
 
     paperboy.move();
 
@@ -34,7 +34,7 @@ module.exports = function (Q) {
           scale: 0.5,
           gravity: 0,
           collisionMask: null,
-          x: lastHouse ? lastHouse.p.x + 500 : entryPoint,
+          x: lastHouse ? lastHouse.p.x + 600 : entryPoint,
           y: 225,
           z: -2
         }));

@@ -12,6 +12,15 @@ module.exports = function (Q) {
 
     setupChildren: function () {
       var stage = this.stage;
+
+      stage.insert(new Q.Arm({
+        scale: 0.9,
+        x: 15,
+        y: -181,
+        gravity: 0,
+        collisionMask: null
+      }), this);
+
       stage.insert(new Q.Leg({
         scale: 0.82,
         x: -30,
@@ -84,11 +93,13 @@ module.exports = function (Q) {
       paper.animate({
         y: paper.p.y,
         angle: angleOfRotation,
-        scale: paper.p.scale * 0.5
+        scale: paper.p.scale * 0.5,
+        vx: 0.6
       }, 0.4, {
         callback: function () {
           var hitObject = this.stage.locate(paper.p.x, paper.p.y, Q.SPRITE_FRIENDLY);
           if (hitObject) {
+            paper.stopMoving();
             hitObject.trigger('delivery');
             if (hitObject.p.hitType && hitObject.p.hitType === 'HOUSE') {
               Q.state.inc('score', 25);
@@ -97,6 +108,8 @@ module.exports = function (Q) {
             } else if (hitObject.p.hitType && hitObject.p.hitType === 'DOOR') {
               Q.state.inc('score', 50);
             }
+          } else {
+            this.stage.remove(paper);
           }
         }
       });
