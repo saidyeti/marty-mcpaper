@@ -62,8 +62,8 @@ module.exports = function (Q) {
 
     jump: function () {
       console.log('paperboy jump!');
-      this.p.vy = -400;
-      this.p.gravity = true;
+      //this.p.vy = -400;
+      //this.p.gravity = true;
     },
 
     move: function () {
