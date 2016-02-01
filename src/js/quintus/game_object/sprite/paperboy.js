@@ -5,7 +5,7 @@ module.exports = function (Q) {
     init: function (p) {
       this._super(p);
 
-      this.add('2d, jumpControls');
+      this.add('2d'/*, jumpControls'*/);
 
       Q.input.on('jump', this, 'jump');
     },
@@ -62,6 +62,8 @@ module.exports = function (Q) {
 
     jump: function () {
       console.log('paperboy jump!');
+      this.p.vy = -400;
+      this.p.gravity = true;
     },
 
     move: function () {
@@ -71,7 +73,33 @@ module.exports = function (Q) {
     },
 
     sendPaperFlying: function () {
-      console.log('send paper flying!');
+      var paper = this.stage.insert(new Q.Paper({
+        x: this.p.x + 32,
+        y: this.p.y - 186,
+        vx: this.p.vx,
+        scale: 0.45,
+        angle: 75
+      }));
+      var angleOfRotation = -360 * Math.floor(1 + Math.random() * 0.25);
+      paper.animate({
+        y: paper.p.y,
+        angle: angleOfRotation,
+        scale: paper.p.scale * 0.5
+      }, 0.4, {
+        callback: function () {
+          var hitObject = this.stage.locate(paper.p.x, paper.p.y, Q.SPRITE_FRIENDLY);
+          if (hitObject) {
+            hitObject.trigger('delivery');
+            if (hitObject.p.hitType && hitObject.p.hitType === 'HOUSE') {
+              Q.state.inc('score', 25);
+            } else if (hitObject.p.hitType && hitObject.p.hitType === 'WINDOW') {
+              Q.state.inc('score', -20);
+            } else if (hitObject.p.hitType && hitObject.p.hitType === 'DOOR') {
+              Q.state.inc('score', 50);
+            }
+          }
+        }
+      });
     }
 
   });

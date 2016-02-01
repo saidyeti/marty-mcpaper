@@ -10,7 +10,9 @@ module.exports = function (Q) {
       this._super(p, {
         sprite: typeChoice,
         sheet: typeChoice,
-        frame: Math.floor(Math.random() * frameTotal)
+        frame: Math.floor(Math.random() * frameTotal),
+        type: Q.SPRITE_FRIENDLY,
+        hitType: 'HOUSE'
       });
 
       this.add('2d');

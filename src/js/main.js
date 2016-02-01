@@ -27,8 +27,6 @@
     upsampleHeight: 320
   });
 
-   
-
   Q.input.keyboardControls({
     Z: 'jump',
     X: 'fire'
@@ -56,6 +54,7 @@
   require('./quintus/game_object/sprite/bicycle')(Q);
   require('./quintus/game_object/sprite/wheel')(Q);
   require('./quintus/game_object/sprite/house')(Q);
+  require('./quintus/game_object/sprite/paper')(Q);
 
   /* scenes */
   require('./quintus/scene/background')(Q);
