@@ -1,0 +1,19 @@
+module.exports = function (Q) {
+
+  Q.House.extend('Snow', {
+
+    init: function (p) {
+      this._super(p, {
+        sheet: 'snow',
+        doorType: 'door',
+        frameTotal: 3,
+        windowXLocations: [-250, -42, 280],
+        bottomWindowBuffer: 54,
+        doorXLocation: 94,
+        bottomDoorBuffer: -48
+      });
+    }
+
+  });
+
+};

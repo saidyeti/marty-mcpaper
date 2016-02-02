@@ -80,6 +80,12 @@ gulp.task('resizeImages', function () {
       'window*.png': [{
         width: 132
       }],
+      'door*.png': [{
+        width: 100
+      }],
+      'skinnydoor*.png': [{
+        width: 72
+      }],
       'man*.png': [{
         width: 354
       }],

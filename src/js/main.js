@@ -46,16 +46,23 @@
   require('./quintus/component/jumpcontrols')(Q);
 
   /* sprites */
-  require('./quintus/game_object/sprite/score')(Q);
-  require('./quintus/game_object/sprite/lives')(Q);
-  require('./quintus/game_object/sprite/paperboy')(Q);
-  require('./quintus/game_object/sprite/torso')(Q);
-  require('./quintus/game_object/sprite/arm')(Q);
-  require('./quintus/game_object/sprite/leg')(Q);
-  require('./quintus/game_object/sprite/bicycle')(Q);
-  require('./quintus/game_object/sprite/wheel')(Q);
-  require('./quintus/game_object/sprite/house')(Q);
-  require('./quintus/game_object/sprite/paper')(Q);
+  require('./quintus/game_object/sprite/hud/score')(Q);
+  require('./quintus/game_object/sprite/hud/lives')(Q);
+  require('./quintus/game_object/sprite/paperboy/paperboy')(Q);
+  require('./quintus/game_object/sprite/paperboy/torso')(Q);
+  require('./quintus/game_object/sprite/paperboy/arm')(Q);
+  require('./quintus/game_object/sprite/paperboy/leg')(Q);
+  require('./quintus/game_object/sprite/paperboy/bicycle')(Q);
+  require('./quintus/game_object/sprite/paperboy/wheel')(Q);
+  require('./quintus/game_object/sprite/house/house')(Q);
+  require('./quintus/game_object/sprite/house/phil')(Q);
+  require('./quintus/game_object/sprite/house/barbie')(Q);
+  require('./quintus/game_object/sprite/house/basic')(Q);
+  require('./quintus/game_object/sprite/house/snow')(Q);
+  require('./quintus/game_object/sprite/house/rocko')(Q);
+  require('./quintus/game_object/sprite/house/window')(Q);
+  require('./quintus/game_object/sprite/house/door')(Q);
+  require('./quintus/game_object/sprite/object/paper')(Q);
 
   /* scenes */
   require('./quintus/scene/background')(Q);

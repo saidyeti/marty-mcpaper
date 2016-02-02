@@ -1,0 +1,19 @@
+module.exports = function (Q) {
+
+  Q.House.extend('Barbie', {
+
+    init: function (p) {
+      this._super(p, {
+        sheet: 'barbie',
+        doorType: 'skinnydoor',
+        frameTotal: 3,
+        windowXLocations: [-132, 130],
+        bottomWindowBuffer: 54,
+        doorXLocation: 20,
+        bottomDoorBuffer: -48
+      });
+    }
+
+  });
+
+};

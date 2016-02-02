@@ -87,24 +87,31 @@ module.exports = function (Q) {
         y: this.p.y - 186,
         vx: this.p.vx,
         scale: 0.45,
-        angle: 75
+        angle: 75,
+        z: this.p.z - 1
       }));
       var angleOfRotation = -360 * Math.floor(1 + Math.random() * 0.25);
       paper.animate({
         y: paper.p.y,
         angle: angleOfRotation,
         scale: paper.p.scale * 0.5,
-        vx: 0.6
+        vx: 0.1 * paper.p.vx
       }, 0.4, {
         callback: function () {
-          var hitObject = this.stage.locate(paper.p.x, paper.p.y, Q.SPRITE_FRIENDLY);
+          var hitObject = this.stage.locate(paper.p.x, paper.p.y, Q.SPRITE_DOOR);
+          if (!hitObject) {
+            hitObject = this.stage.locate(paper.p.x, paper.p.y, Q.SPRITE_WINDOW);
+          }
+          if (!hitObject) {
+            hitObject = this.stage.locate(paper.p.x, paper.p.y, Q.SPRITE_HOUSE);
+          }
           if (hitObject) {
             paper.stopMoving();
             hitObject.trigger('delivery');
             if (hitObject.p.hitType && hitObject.p.hitType === 'HOUSE') {
               Q.state.inc('score', 25);
             } else if (hitObject.p.hitType && hitObject.p.hitType === 'WINDOW') {
-              Q.state.inc('score', -20);
+              Q.state.inc('score', -25);
             } else if (hitObject.p.hitType && hitObject.p.hitType === 'DOOR') {
               Q.state.inc('score', 50);
             }

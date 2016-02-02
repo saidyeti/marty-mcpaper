@@ -1,12 +1,14 @@
 module.exports = function (Q) {
 
+  var houseBaselineMark = 330;
+
   Q.scene('route', function (stage) {
 
     var paperboy = stage.insert(new Q.PaperBoy({
       scale: 0.5,
       x: 50,
       y: 440,
-      vx: 400,
+      vx: 360,
       gravity: 0,
       collisionMask: null,
       z: 2
@@ -20,9 +22,18 @@ module.exports = function (Q) {
     var houseQueue = [];
 
     stage.on('prestep', stage, function (dt) {
+      var removalMark = paperboy.p.x - Q.width / 2;
+      
+      Q('Paper').each(function () {
+        var paper = this;
+        if (paper.p.sx + paper.p.w < removalMark) {
+          stage.remove(paper);
+        }
+      });
+
       var houses = Q('House');
       houseQueue.forEach(function (house, index) {
-        if (house.p.x < paperboy.p.x - Q.width) {
+        if (house.p.sx + house.p.w < removalMark) {
           stage.remove(house);
           houseQueue.splice(index, 1);
         }
@@ -30,14 +41,18 @@ module.exports = function (Q) {
       var entryPoint = paperboy.p.x + 1300;
       var lastHouse = houseQueue[houseQueue.length - 1];
       while (!lastHouse || lastHouse.p.x + lastHouse.p.w < entryPoint) {
-        var house = stage.insert(new Q.House({
+        var houseClassNames = Q.House.descendantClassNames;
+        var numClasses = houseClassNames.length;
+        var className = houseClassNames[Math.floor(Math.random() * numClasses)];
+        var house = stage.insert(new Q[className]({
           scale: 0.5,
           gravity: 0,
           collisionMask: null,
           x: lastHouse ? lastHouse.p.x + 600 : entryPoint,
-          y: 225,
+          baseY: houseBaselineMark,
           z: -2
         }));
+        house.setupChildren();
         houseQueue.push(house);
         lastHouse = house;
       }
