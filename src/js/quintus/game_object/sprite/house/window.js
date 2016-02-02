@@ -27,7 +27,7 @@ module.exports = function (Q) {
   Q.animations('window', {
     shatter: {
       frames: [0, 1, 2, 3, 4],
-      rate: 1/10,
+      rate: 1/7,
       loop: false
     }
   });

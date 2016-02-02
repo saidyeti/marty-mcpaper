@@ -95,7 +95,7 @@ module.exports = function (Q) {
         y: paper.p.y,
         angle: angleOfRotation,
         scale: paper.p.scale * 0.5,
-        vx: 0.1 * paper.p.vx
+        vx: 0
       }, 0.4, {
         callback: function () {
           var hitObject = this.stage.locate(paper.p.x, paper.p.y, Q.SPRITE_DOOR);
@@ -114,6 +114,7 @@ module.exports = function (Q) {
               Q.state.inc('score', -25);
             } else if (hitObject.p.hitType && hitObject.p.hitType === 'DOOR') {
               Q.state.inc('score', 50);
+              this.stage.remove(paper);
             }
           } else {
             this.stage.remove(paper);

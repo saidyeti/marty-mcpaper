@@ -26,6 +26,9 @@ module.exports = function (Q) {
       
       Q('Paper').each(function () {
         var paper = this;
+        if (paper.p.y > houseBaselineMark) {
+          paper.del('2d');
+        }
         if (paper.p.sx + paper.p.w < removalMark) {
           stage.remove(paper);
         }

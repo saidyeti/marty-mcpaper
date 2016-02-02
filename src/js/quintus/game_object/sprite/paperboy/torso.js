@@ -6,32 +6,60 @@ module.exports = function (Q) {
       this._super(p, {
         sprite: 'man',
         sheet: 'man',
-        frame: 0
+        frame: 0,
+        awaitingRelease: false,
+        awaitingThrowCompletion: false,
+        readyToThrow: false
       });
 
       this.add('2d, animation');
 
-      Q.input.on('fire', this, 'throwPaper');
+      Q.input.on('fire', this, 'fetchPaper');
+
+      this.on('paperfetched', this, function () {
+        this.p.readyToThrow = true;
+      });
+
+      this.on('paperthrown', this, function () {
+        this.p.awaitingThrowCompletion = false;
+      });
     },
 
-    throwPaper: function () {
-      this.play('throwPaper');
+    fetchPaper: function () {
+      if (this.p.awaitingThrowCompletion) {
+        return;
+      }
+      this.p.awaitingRelease = true;
+      this.p.awaitingThrowCompletion = true;
+      this.play('fetchPaper');
+    },
+
+    step: function (dt) {
+      if (this.p.awaitingRelease && !Q.inputs['fire']) {
+        this.p.awaitingRelease = false;
+      }
+      if (this.p.readyToThrow && !this.p.awaitingRelease) {
+        this.play('throwPaper');
+        this.p.readyToThrow = false;
+      }
     }
 
   });
 
   Q.animations('man', {
+    fetchPaper: {
+      frames: [1, 2, 3, 4, 5, 6],
+      rate: 1/20,
+      loop: false,
+      trigger: 'paperfetched'
+    },
     throwPaper: {
-      frames: [
-        0, 1, 2, 3, 4, 5, 6, 7,
-        8, 9, 10, 11, 12, 13, 14,
-        15, 16
-      ],
+      frames: [7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
       rate: 1/20,
       trigger: 'paperthrown',
-      next: 'pullArmBack'
+      next: 'lowerArmBackToHandlebars'
     },
-    pullArmBack: {
+    lowerArmBackToHandlebars: {
       frames: [17, 18, 0],
       rate: 1/20,
       loop: false
