@@ -27,6 +27,10 @@ module.exports = function (Q) {
       Q('Paper').each(function () {
         var paper = this;
         if (paper.p.y > houseBaselineMark) {
+          /* removes gravitational physics to simulate
+           * hitting the ground... simpler than adding
+           * an invisible platform unnecessarily.
+           */
           paper.del('2d');
         }
         if (paper.p.sx + paper.p.w < removalMark) {

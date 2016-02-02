@@ -48,13 +48,13 @@ module.exports = function (Q) {
 
   Q.animations('man', {
     fetchPaper: {
-      frames: [1, 2, 3, 4, 5, 6],
+      frames: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       rate: 1/20,
       loop: false,
       trigger: 'paperfetched'
     },
     throwPaper: {
-      frames: [7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+      frames: [10, 11, 12, 13, 14, 15, 16],
       rate: 1/20,
       trigger: 'paperthrown',
       next: 'lowerArmBackToHandlebars'

@@ -5,7 +5,7 @@ module.exports = function (Q) {
     init: function (p) {
       this._super(p, {
         sheet: 'barbie',
-        doorType: 'skinnydoor',
+        doorSheet: 'skinnydoor',
         frameTotal: 3,
         windowXLocations: [-132, 130],
         bottomWindowBuffer: 54,

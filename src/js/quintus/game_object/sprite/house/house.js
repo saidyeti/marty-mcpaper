@@ -29,10 +29,10 @@ module.exports = function (Q) {
         }), this);
       }, this);
 
-      var doorClassName = p.doorType === 'skinnydoor' ? 'SkinnyDoor' : 'Door';
+      var doorClassName = p.doorSheet === 'skinnydoor' ? 'SkinnyDoor' : 'Door';
       this.stage.insert(new Q[doorClassName]({
         x: p.doorXLocation,
-        y: p.h / 2 + p.bottomDoorBuffer - Q.sheet(p.doorType).tileH * p.scale / 2,
+        y: p.h / 2 + p.bottomDoorBuffer - Q.sheet(p.doorSheet).tileH * p.scale / 2,
         z: p.z + 1,
         gravity: 0,
         collisionMask: null
