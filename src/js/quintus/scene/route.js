@@ -1,8 +1,16 @@
 module.exports = function (Q) {
 
   var houseBaselineMark = 330;
+  var roadBaselineMark = 548;
 
   Q.scene('route', function (stage) {
+
+    stage.insert(new Q.RoadPlatform({
+      x: 50,
+      y: roadBaselineMark,
+      vx: 360,
+      gravity: 0
+    }));
 
     var paperboy = stage.insert(new Q.PaperBoy({
       scale: 0.5,

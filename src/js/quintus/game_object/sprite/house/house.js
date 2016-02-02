@@ -16,7 +16,7 @@ module.exports = function (Q) {
     setupChildren: function () {
       var p = this.p;
       var windowHeight = Q.sheet('window').tileH;
-      var y = p.h / 2 + p.bottomWindowBuffer - windowHeight / 2;
+      var y = p.cy + p.bottomWindowBuffer - windowHeight / 2;
 
       p.windowXLocations.forEach(function (x) {
         this.stage.insert(new Q.Window({
@@ -32,7 +32,7 @@ module.exports = function (Q) {
       var doorClassName = p.doorSheet === 'skinnydoor' ? 'SkinnyDoor' : 'Door';
       this.stage.insert(new Q[doorClassName]({
         x: p.doorXLocation,
-        y: p.h / 2 + p.bottomDoorBuffer - Q.sheet(p.doorSheet).tileH * p.scale / 2,
+        y: p.cy + p.bottomDoorBuffer - Q.sheet(p.doorSheet).tileH * p.scale / 2,
         z: p.z + 1,
         gravity: 0,
         collisionMask: null
