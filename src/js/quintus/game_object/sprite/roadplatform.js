@@ -4,7 +4,7 @@ module.exports = function (Q) {
 
     init: function (p) {
       this._super(p, {
-        w: 400,
+        w: 1200,
         h: 1,
         type: Q.SPRITE_DEFAULT,
         collisionMask: Q.SPRITE_ACTIVE

@@ -6,7 +6,7 @@ module.exports = function (Q) {
   Q.scene('route', function (stage) {
 
     stage.insert(new Q.RoadPlatform({
-      x: 50,
+      x: Q.width / 2,
       y: roadBaselineMark,
       vx: 360,
       gravity: 0
@@ -18,7 +18,6 @@ module.exports = function (Q) {
       y: 440,
       vx: 360,
       gravity: 0,
-      collisionMask: null,
       z: 2
     }));
     paperboy.setupChildren();

@@ -4,6 +4,7 @@ module.exports = function (Q) {
 
     init: function (p) {
       this._super(p, {
+        /*
         points: [
           [-70, -324],
           [20, -324],
@@ -23,7 +24,10 @@ module.exports = function (Q) {
           [-170, -80],
           [-170, -240],
           [-70, -324]
-        ]
+        ],
+        */
+        type: Q.SPRITE_ACTIVE,
+        collisionMask: Q.SPRITE_DEFAULT
       });
 
       this.add('2d, jumpControls');
@@ -92,8 +96,8 @@ module.exports = function (Q) {
 
     jump: function () {
       console.log('paperboy jump!');
-      //this.p.vy = -400;
-      //this.p.gravity = true;
+      this.p.vy = -400;
+      this.p.gravity = true;
     },
 
     move: function () {

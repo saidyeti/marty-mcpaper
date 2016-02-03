@@ -46,6 +46,7 @@
 
   /* custom components */
   require('./quintus/component/jumpcontrols')(Q);
+  require('./quintus/component/static2d')(Q);
 
   /* sprites */
   require('./quintus/game_object/sprite/hud/score')(Q);

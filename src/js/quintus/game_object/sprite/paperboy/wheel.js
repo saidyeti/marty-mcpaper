@@ -6,7 +6,18 @@ module.exports = function (Q) {
       this._super(p, {
         sprite: 'wheel',
         sheet: 'wheel',
-        frame: 0
+        frame: 0,
+        points: [
+          [-50, -122],
+          [50, -122],
+          [122, -50],
+          [122, 50],
+          [50, 122],
+          [-50, 122],
+          [-122, 50],
+          [-122, -50],
+          [-50, -122]
+        ]
       });
 
       this.add('2d, animation');
