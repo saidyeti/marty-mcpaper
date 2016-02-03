@@ -3,11 +3,32 @@ module.exports = function (Q) {
   Q.Sprite.extend('PaperBoy', {
 
     init: function (p) {
-      this._super(p);
+      this._super(p, {
+        points: [
+          [-70, -324],
+          [20, -324],
+          [20, -180],
+          [140, -180],
+          [140, -80],
+          [294, 40],
+          [294, 146],
+          [224, 216],
+          [120, 216],
+          [60, 170],
+          [-60, 170],
+          [-120, 216],
+          [-217, 216],
+          [-287, 146],
+          [-287, 40],
+          [-170, -80],
+          [-170, -240],
+          [-70, -324]
+        ]
+      });
 
-      this.add('2d'/*, jumpControls'*/);
+      this.add('2d, jumpControls');
 
-      Q.input.on('jump', this, 'jump');
+      this.on('jump');
     },
 
     setupChildren: function () {
