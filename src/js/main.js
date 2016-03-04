@@ -35,8 +35,9 @@
   // Q.debug = true; // uncomment to show debug frames around sprites
 
   Q.input.keyboardControls({
-    Z: 'jump',
+    //Z: 'jump',
     X: 'fire'
+    ,SPACE: 'fire'
   });
 
   Q.input.touchControls({
@@ -45,7 +46,7 @@
       [],
       [],
       [],
-      ['jump', 'J']
+      [/*'jump', 'J'*/]
     ]
   });
 
