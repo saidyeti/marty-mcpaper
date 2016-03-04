@@ -16,6 +16,7 @@ module.exports = function (Q) {
     stopMoving: function () {
       this.p.vx = 0;
       this.p.vy = 0;
+      Q.audio.play('paper_thud.mp3');
     }
 
   });

@@ -88,10 +88,16 @@
       'marty_mcpaper_theme.mp3',
       'window_shatter_01.mp3',
       'window_shatter_02.mp3',
-      'window_shatter_03.mp3'
+      'window_shatter_03.mp3',
+      'paper_thud.mp3',
+      'woosh.mp3',
+      'paper_rustle_01.mp3',
+      'paper_rustle_02.mp3',
+      'door_crash.mp3'
     ], function() {
 
       document.getElementById('intro_image').style.display = 'none';
+      document.getElementById('loading_container').style.display = 'none';
 
       Q.compileSheets('sprites.png', 'sprites.json');
 

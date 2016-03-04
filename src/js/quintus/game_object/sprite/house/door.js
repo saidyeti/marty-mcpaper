@@ -27,6 +27,8 @@ module.exports = function (Q) {
       });
 
       puff.play('boom');
+
+      Q.audio.play('door_crash.mp3');
     }
 
   });

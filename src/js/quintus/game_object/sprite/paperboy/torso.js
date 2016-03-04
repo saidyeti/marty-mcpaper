@@ -32,6 +32,10 @@ module.exports = function (Q) {
       this.p.awaitingRelease = true;
       this.p.awaitingThrowCompletion = true;
       this.play('fetchPaper');
+      Q.audio.playAny([
+        'paper_rustle_01.mp3',
+        'paper_rustle_02.mp3'
+      ]);
     },
 
     step: function (dt) {
@@ -40,6 +44,7 @@ module.exports = function (Q) {
       }
       if (this.p.readyToThrow && !this.p.awaitingRelease) {
         this.play('throwPaper');
+        Q.audio.play('woosh.mp3');
         this.p.readyToThrow = false;
       }
     }
