@@ -5,11 +5,22 @@ module.exports = function (Q) {
   Q.Sprite.extend('House', {
 
     init: function (p, defaults) {
+      var sheet = Q.sheet(defaults.sheet);
+      var tileW = sheet.tileW;
+      var tileH = sheet.tileH;
+      var leftMargin = defaults.leftMargin;
+      var rightMargin = defaults.rightMargin;
       this._super(p, Q._extend({
         frame: Math.floor(Math.random() * defaults.frameTotal),
         type: Q.SPRITE_HOUSE,
         hitType: 'HOUSE',
-        y: p.baseY - Q.sheet(defaults.sheet).tileH * p.scale / 2
+        y: p.baseY - sheet.tileH * p.scale / 2,
+        points: [
+          [-tileW / 2 + leftMargin, -tileH / 2],
+          [tileW / 2 - rightMargin, -tileH / 2],
+          [tileW / 2 - rightMargin, tileH / 2],
+          [-tileW / 2 + leftMargin, tileH / 2]
+        ]
       }, defaults));
     },
 

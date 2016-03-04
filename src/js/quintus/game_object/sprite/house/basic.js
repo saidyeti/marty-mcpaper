@@ -10,7 +10,9 @@ module.exports = function (Q) {
         windowXLocations: [-290, -75, 328],
         bottomWindowBuffer: 54,
         doorXLocation: 182,
-        bottomDoorBuffer: -48
+        bottomDoorBuffer: -48,
+        leftMargin: 48,
+        rightMargin: 45
       });
     }
 
