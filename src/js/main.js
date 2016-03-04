@@ -70,6 +70,8 @@
   require('./quintus/game_object/sprite/house/rocko')(Q);
   require('./quintus/game_object/sprite/house/window')(Q);
   require('./quintus/game_object/sprite/house/door')(Q);
+  require('./quintus/game_object/sprite/house/tree')(Q);
+  require('./quintus/game_object/sprite/house/bush')(Q);
   require('./quintus/game_object/sprite/object/paper')(Q);
   require('./quintus/game_object/sprite/roadplatform')(Q);
 

@@ -64,7 +64,7 @@ module.exports = function (Q) {
           collisionMask: null,
           x: lastHouse ? lastHouse.p.x + 600 : entryPoint,
           baseY: houseBaselineMark,
-          z: -2
+          z: -4
         }));
         house.setupChildren();
         houseQueue.push(house);
