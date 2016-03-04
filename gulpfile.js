@@ -53,6 +53,12 @@ gulp.task('resizeImages', function () {
       'tree1.png': [{
         width: 68
       }],
+      'firstbush1.png': [{
+        width: 164
+      }],
+      'secondbush1.png': [{
+        width: 161
+      }],
       'arm1.png': [{
         width: 182
       }],

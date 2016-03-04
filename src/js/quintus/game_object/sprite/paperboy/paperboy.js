@@ -135,10 +135,12 @@ module.exports = function (Q) {
             hitObject.trigger('delivery');
             if (hitObject.p.hitType && hitObject.p.hitType === 'HOUSE') {
               Q.state.inc('score', 25);
+              Q.audio.play('success2.mp3');
             } else if (hitObject.p.hitType && hitObject.p.hitType === 'WINDOW') {
               Q.state.inc('score', -25);
             } else if (hitObject.p.hitType && hitObject.p.hitType === 'DOOR') {
               Q.state.inc('score', 50);
+              Q.audio.play('success1.mp3');
               this.stage.remove(paper);
             }
           } else {

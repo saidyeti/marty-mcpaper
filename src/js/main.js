@@ -93,7 +93,9 @@
       'woosh.mp3',
       'paper_rustle_01.mp3',
       'paper_rustle_02.mp3',
-      'door_crash.mp3'
+      'door_crash.mp3',
+      'success1.mp3',
+      'success2.mp3'
     ], function() {
 
       document.getElementById('intro_image').style.display = 'none';
