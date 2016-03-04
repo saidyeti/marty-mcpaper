@@ -20,6 +20,11 @@ module.exports = function (Q) {
 
     shatter: function () {
       this.play('shatter');
+      Q.audio.playAny([
+        'window_shatter_01.mp3',
+        'window_shatter_02.mp3',
+        'window_shatter_03.mp3'
+      ]);
     }
 
   });
