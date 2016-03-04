@@ -17,8 +17,11 @@
   require('./quintus/module/svg_asset')(Quintus);
 
   /* Quintus instance and environment preparation */
-  var Q = Quintus({ development: true })
-            .include('Sprites, Scenes, Touch, UI, Anim, Audio, Input, 2D, SVGAsset');
+  var Q = Quintus({
+    development: true,
+    audioSupported: ['mp3', 'ogg']
+  });
+  Q.include('Sprites, Scenes, Touch, UI, Anim, Audio, Input, 2D, SVGAsset');
   Q.setup({
     width: 800,
     height: 600,
@@ -26,8 +29,9 @@
     upsampleWidth: 420,
     upsampleHeight: 320
   });
+  Q.enableSound();
 
-  Q.debug = true;
+  // Q.debug = true; // uncomment to show debug frames around sprites
 
   Q.input.keyboardControls({
     Z: 'jump',
@@ -76,7 +80,7 @@
 
   setTimeout(function() {
 
-    Q.load(['sprites.png', 'sprites.json', 'background.svg'], function() {
+    Q.load(['sprites.png', 'sprites.json', 'background.svg', 'marty_mcpaper_theme.mp3'], function() {
 
       document.getElementById('intro_image').style.display = 'none';
 
@@ -95,7 +99,11 @@
       Q.state.set({ score: 0, lives: 3 });
       Q.state.get('score');
 
-      
+      Q.audio.play('marty_mcpaper_theme.mp3', {
+        loop: true,
+        loopStart: 15.41,
+        loopEnd: 46.1
+      });
 
     }, {
       progressCallback: function (loaded, total) {

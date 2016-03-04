@@ -1,10 +1,11 @@
 module.exports = function (Q) {
 
+  Q.SPRITE_PAPERBOY = 128;
+
   Q.Sprite.extend('PaperBoy', {
 
     init: function (p) {
       this._super(p, {
-        /*
         points: [
           [-70, -324],
           [20, -324],
@@ -25,9 +26,8 @@ module.exports = function (Q) {
           [-170, -240],
           [-70, -324]
         ],
-        */
-        type: Q.SPRITE_ACTIVE,
-        collisionMask: Q.SPRITE_DEFAULT
+        type: Q.SPRITE_PAPERBOY,
+        collisionMask: Q.SPRITE_ROAD_PLATFORM
       });
 
       this.add('2d, jumpControls');

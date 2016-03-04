@@ -4,7 +4,7 @@
   "description": "You are a paperboy! Hit your targets and avoid obstacles.",
   "main": "dist/index.html",
   "dependencies": {
-    "quintus": "git+https://github.com/benwiley4000/Quintus.git#extend-components"
+    "quintus": "git+https://github.com/benwiley4000/Quintus.git#audioLoopPoints"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
