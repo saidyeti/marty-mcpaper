@@ -12,6 +12,10 @@ module.exports = function (Q) {
       this.add('2d, animation');
 
       this.on('move');
+
+      Q.getTimer('countdown').onEnd(function () {
+        this.p.animation = null;
+      }.bind(this));
     },
 
     move: function () {

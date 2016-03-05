@@ -26,6 +26,12 @@ module.exports = function (Q) {
 
     paperboy.move();
 
+    var countdown = Q.getTimer('countdown');
+    countdown.onEnd(function () {
+      paperboy.p.vx = 0;
+    });
+    countdown.start();
+
     var houseQueue = [];
 
     stage.on('prestep', stage, function (dt) {

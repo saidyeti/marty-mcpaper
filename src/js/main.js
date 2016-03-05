@@ -16,13 +16,14 @@
   /* custom Quintus modules */
   require('./quintus/module/svg_asset')(Quintus);
   require('./quintus/module/audio_extras')(Quintus);
+  require('./quintus/module/timers')(Quintus);
 
   /* Quintus instance and environment preparation */
   var Q = Quintus({
     development: true,
     audioSupported: ['mp3', 'ogg']
   });
-  Q.include('Sprites, Scenes, Touch, UI, Anim, Audio, Input, 2D, SVGAsset, AudioExtras');
+  Q.include('Sprites, Scenes, Touch, UI, Anim, Audio, Input, 2D, SVGAsset, AudioExtras, Timers');
   Q.setup({
     width: 800,
     height: 600,
@@ -57,6 +58,7 @@
   /* sprites */
   require('./quintus/game_object/sprite/hud/score')(Q);
   require('./quintus/game_object/sprite/hud/lives')(Q);
+  require('./quintus/game_object/sprite/hud/countdown')(Q);
   require('./quintus/game_object/sprite/paperboy/paperboy')(Q);
   require('./quintus/game_object/sprite/paperboy/torso')(Q);
   require('./quintus/game_object/sprite/paperboy/arm')(Q);
@@ -105,6 +107,22 @@
       document.getElementById('loading_container').style.display = 'none';
 
       Q.compileSheets('sprites.png', 'sprites.json');
+
+      Q.gameLoop(function (dt) {
+        Q.timerGameLoop(dt);
+        Q.stageGameLoop(dt);
+      });
+
+      var countdown = Q.addTimer('countdown', 3, null, function () {
+        Q.input.keyboardControls({
+          Z: null,
+          X: null,
+          SPACE: null
+        });
+        Q.input.touchControls({
+          controls: []
+        });
+      });
 
       /* staging */
       Q.stageScene('background');
