@@ -113,7 +113,7 @@
         Q.stageGameLoop(dt);
       });
 
-      var countdown = Q.addTimer('countdown', 3, null, function () {
+      var countdown = Q.addTimer('countdown', 90, null, function () {
         Q.input.keyboardControls({
           Z: null,
           X: null,
