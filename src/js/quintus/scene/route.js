@@ -25,11 +25,7 @@ module.exports = function (Q) {
     stage.viewport.offset(-170, 0);
 
     paperboy.move();
-
     var countdown = Q.getTimer('countdown');
-    countdown.onEnd(function () {
-      paperboy.p.vx = 0;
-    });
     countdown.start();
 
     var houseQueue = [];
