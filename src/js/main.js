@@ -103,7 +103,6 @@
       'success2.mp3'
     ], function() {
 
-      document.getElementById('intro_image').style.display = 'none';
       document.getElementById('loading_container').style.display = 'none';
 
       Q.compileSheets('sprites.png', 'sprites.json');

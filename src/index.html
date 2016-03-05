@@ -45,15 +45,32 @@
       #loading_container {
         background-color: #fff;
       }
+      #refresh-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+      }
+      #refresh-button::after {
+        content: '\27f3';
+        font-weight: bold;
+        font-size: 40px;
+        color: #fff;
+      }
     </style>
   </head>
   <body>
     <div id='loading_container'>
       Loading...
-    <div id='loading_progress'></div>
-    <div id="intro_image"><img src="images/intro_gif.gif"/></div>
-
-
+      <div id='loading_progress'></div>
+      <div id="intro_image"><img src="images/intro_gif.gif"/></div>
+    </div>
+    <div id="refresh-button"></div>
+    <script>
+      document.getElementById('refresh-button').addEventListener('click', function () {
+        document.location.reload();
+      });
+    </script>
     <script src="js/bundle.js"></script>
   </body>
 </html>
