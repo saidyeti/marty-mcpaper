@@ -100,7 +100,8 @@
       'paper_rustle_02.mp3',
       'door_crash.mp3',
       'success1.mp3',
-      'success2.mp3'
+      'success2.mp3',
+      'timer_warning_beep.mp3'
     ], function() {
 
       document.getElementById('loading_container').style.display = 'none';
