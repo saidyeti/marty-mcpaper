@@ -28,6 +28,9 @@ module.exports = function (Quintus) {
     Timer.prototype.pause = function () {
       this.running = false;
     };
+    Timer.prototype.reset = function () {
+      this.timeElapsed = 0;
+    };
     Timer.prototype.incrementTime = function (dt) {
       return this.timeElapsed += dt;
     };

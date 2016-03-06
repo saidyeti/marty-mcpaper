@@ -5,7 +5,12 @@ module.exports = function (Q) {
 
   Q.scene('route', function (stage) {
 
-    var countdown = Q.addTimer('countdown', 5, { force: true });
+    var countdown = Q.addTimer('countdown', 90, { force: true });
+    countdown.onEnd(function () {
+      var restartPromptTimer = Q.getTimer('restartPrompt');
+      restartPromptTimer.reset();
+      restartPromptTimer.start();
+    });
 
     stage.insert(new Q.RoadPlatform({
       x: Q.width / 2,

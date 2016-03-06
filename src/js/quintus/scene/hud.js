@@ -21,7 +21,23 @@ module.exports = function (Q) {
     
     }));
 
+    var pressSpaceToRestart = new Q.UI.Text({
+      label: 'PRESS SPACE TO RESTART',
+      color: '#fff',
+      outlineColor: '#000',
+      outlineWidth: '10',
+      x: 400,
+      y: 200
+    });
+    pressSpaceToRestart.fontString = 'normal 42pt Bangers';
 
+    stage.on('showRestartPrompt', stage, function () {
+      stage.insert(pressSpaceToRestart);
+    });
+
+    stage.on('hideRestartPrompt', stage, function () {
+      stage.remove(pressSpaceToRestart);
+    });
   });
 
 };

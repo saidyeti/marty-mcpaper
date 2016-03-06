@@ -115,21 +115,46 @@
 
       /* staging */
       Q.stageScene('background');
-      Q.stageScene('route', 1, {
-        sort: true
-      });
-      Q.stageScene('hud', 2, {
+      var hud = Q.stageScene('hud', 2, {
         label: ''
       });
 
-      //beginning score
-      Q.state.set({ score: 0, lives: 3 });
-      Q.state.get('score');
+      var route;
+      function resetRoute () {
+        route = Q.stageScene('route', 1, {
+          sort: true
+        });
+        route.on('reset', null, resetRoute);
+      };
+      resetRoute();
 
-      Q.audio.play('marty_mcpaper_theme.mp3', {
-        loop: true,
-        loopStart: 15.38,
-        loopEnd: 46.07
+      function playThemeSong () {
+        Q.audio.stop('marty_mcpaper_theme.mp3');
+        Q.audio.play('marty_mcpaper_theme.mp3', {
+          loop: true,
+          loopStart: 15.38,
+          loopEnd: 46.07
+        });
+      }
+      playThemeSong();
+
+      function resetScore () {
+        Q.state.set({ score: 0, lives: 3 });
+      }
+      resetScore();
+
+      function restartGame () {
+        Q.input.off('fire', route, restartGame);
+        hud.trigger('hideRestartPrompt');
+        route.trigger('reset');
+        playThemeSong();
+        resetScore();
+      }
+      Q.addTimer('restartPrompt', 2, {
+        end: function () {
+          hud.trigger('showRestartPrompt');
+          Q.input.on('fire', route, restartGame);
+        }
       });
 
     }, {
