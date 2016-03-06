@@ -113,15 +113,18 @@
         Q.stageGameLoop(dt);
       });
 
-      var countdown = Q.addTimer('countdown', 90, null, function () {
-        Q.input.keyboardControls({
-          Z: null,
-          X: null,
-          SPACE: null
-        });
-        Q.input.touchControls({
-          controls: []
-        });
+      var countdown = Q.addTimer('countdown', 90, {
+        force: true,
+        end: function () {
+          Q.input.keyboardControls({
+            Z: null,
+            X: null,
+            SPACE: null
+          });
+          Q.input.touchControls({
+            controls: []
+          });
+        }
       });
 
       /* staging */

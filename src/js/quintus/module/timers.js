@@ -2,16 +2,16 @@ module.exports = function (Quintus) {
   
   Quintus.Timers = function (Q) {
 
-    Q.timers = [];
+    var timers = {};
 
     function Timer (name, length, step, end) {
       this.name = name;
       this.length = length;
-      stepFunctions = this.stepFunctions = [];
+      var stepFunctions = this.stepFunctions = [];
       if (step && typeof step === 'function') {
         stepFunctions.push(step);
       }
-      endFunctions = this.endFunctions = [];
+      var endFunctions = this.endFunctions = [];
       if (end && typeof end === 'function') {
         endFunctions.push(end);
       }
@@ -33,17 +33,23 @@ module.exports = function (Quintus) {
     };
     Timer.prototype.onStep = function (callback) {
       if (callback && typeof callback === 'function') {
-        stepFunctions.push(callback);
+        this.stepFunctions.push(callback);
       }
     };
     Timer.prototype.onEnd = function (callback) {
       if (callback && typeof callback === 'function') {
-        endFunctions.push(callback);
+        this.endFunctions.push(callback);
       }
     };
 
+    /* In order for added timers to take effect,
+     * timerGameLoop must be called as part of the
+     * main game loop.
+     */
     Q.timerGameLoop = function (dt) {
-      Q.timers.filter(function (timer) {
+      Object.keys(timers).map(function (key) {
+        return timers[key];
+      }).filter(function (timer) {
         return timer.running;
       }).forEach(function (timer) {
         var elapsed = timer.incrementTime(dt);
@@ -60,23 +66,19 @@ module.exports = function (Quintus) {
     };
 
     // accepts length in seconds
-    Q.addTimer = function (name, length, step, end) {
-      if (Q.getTimer(name)) {
+    Q.addTimer = function (name, length, options) {
+      options = options || {};
+      if (Q.getTimer(name) && !options.force) {
         var warning =
           'Warning: No timer created (timer "' + name + '" already exists).';
         console.log(warning);
         return null;
       }
-      var timer = new Timer(name, length, step, end);
-      Q.timers.push(timer);
-      return timer;
+      return timers[name] = new Timer(name, length, options.step, options.end);
     };
 
-    // will return undefined if the timer doesn't exist
     Q.getTimer = function (name) {
-      return Q.timers.filter(function (timer) {
-        return timer.name === name;
-      })[0];
+      return timers[name];
     };
 
   };
