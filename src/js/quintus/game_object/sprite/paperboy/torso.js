@@ -14,8 +14,6 @@ module.exports = function (Q) {
 
       this.add('2d, animation');
 
-      Q.input.on('fire', this, 'fetchPaper');
-
       this.on('paperfetched', this, function () {
         this.p.readyToThrow = true;
       });

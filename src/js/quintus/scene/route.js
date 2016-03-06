@@ -5,6 +5,8 @@ module.exports = function (Q) {
 
   Q.scene('route', function (stage) {
 
+    var countdown = Q.addTimer('countdown', 5, { force: true });
+
     stage.insert(new Q.RoadPlatform({
       x: Q.width / 2,
       y: roadBaselineMark,
@@ -25,7 +27,10 @@ module.exports = function (Q) {
     stage.viewport.offset(-170, 0);
 
     paperboy.move();
-    var countdown = Q.getTimer('countdown');
+
+    countdown.onEnd(function () {
+      paperboy.disableControls();
+    });
     countdown.start();
 
     var houseQueue = [];

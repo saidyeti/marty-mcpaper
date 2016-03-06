@@ -27,7 +27,8 @@ module.exports = function (Q) {
           [-70, -324]
         ],
         type: Q.SPRITE_PAPERBOY,
-        collisionMask: Q.SPRITE_ROAD_PLATFORM
+        collisionMask: Q.SPRITE_ROAD_PLATFORM,
+        disableControls: false
       });
 
       this.add('2d, jumpControls');
@@ -92,9 +93,18 @@ module.exports = function (Q) {
       }), this);
 
       torso.on('paperthrown', this, 'sendPaperFlying');
+
+      Q.input.on('fire', this, function () {
+        if (!this.p.disableControls) {
+          torso.fetchPaper();
+        }
+      });
     },
 
     jump: function () {
+      if (this.p.disableControls) {
+        return;
+      }
       console.log('paperboy jump!');
       this.p.vy = -400;
       this.p.gravity = true;
@@ -104,6 +114,14 @@ module.exports = function (Q) {
       this.children.forEach(function (child) {
         child.trigger('move');
       });
+    },
+
+    disableControls: function () {
+      this.p.disableControls = true;
+    },
+
+    enableControls: function () {
+      this.p.disableControls = false;
     },
 
     sendPaperFlying: function () {
