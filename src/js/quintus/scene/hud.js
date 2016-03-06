@@ -6,10 +6,12 @@ module.exports = function (Q) {
       x: 700,
       y: 40,
     }));
+    /*
     var lives = stage.insert(new Q.Lives({
       x: 700,
       y: 70,
     }));
+    */ // skip displaying lives until it actually means something
     var countdown = stage.insert(new Q.Countdown({
       x: 700,
       y: 500,
