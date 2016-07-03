@@ -39,7 +39,7 @@ gulp.task('copy:svg', function () {
 });
 
 gulp.task('compileSprites', function(cb) {
-  runSequence('resizeImages', 'spritesheet', cb);
+  runSequence('resizeImages'/*, 'spritesheet'*/, cb);
 });
 
 gulp.task('resizeImages', function () {

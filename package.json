@@ -1,18 +1,20 @@
 {
-  "name": "paperboy-game-ggj16",
+  "name": "marty-mcpaper",
   "version": "0.1.0",
   "description": "You are a paperboy! Hit your targets and avoid obstacles.",
   "main": "dist/index.html",
   "dependencies": {
-    "quintus": "git+https://github.com/benwiley4000/Quintus.git#audioLoopPoints"
+    "Quintus": "git+https://github.com/benwiley4000/Quintus.git"
   },
   "scripts": {
+    "electron": "rm -rf electron_build && rm -rf electron_out && node electron.js && ./electron_zip.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "browserify": "^13.0.0",
+    "electron-packager": "^7.1.0",
     "gulp": "^3.9.0",
     "gulp-jshint": "^2.0.0",
     "gulp-plumber": "^1.0.1",
@@ -20,8 +22,8 @@
     "gulp-shell": "^0.5.2",
     "jshint": "^2.9.1",
     "jshint-stylish": "^2.1.0",
+    "ncp": "^2.0.0",
     "run-sequence": "^1.1.5",
-    "spriter": "git+https://github.com/cykod/Spriter.git",
     "vinyl-source-stream": "^1.1.0"
   }
 }

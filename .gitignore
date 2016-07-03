@@ -1,3 +1,4 @@
 node_modules
 dist
-
+electron_build
+electron_out
